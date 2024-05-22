@@ -1,0 +1,76 @@
+a{
+    text-decoration: none;
+}
+p{
+    font-size: 20px;
+}
+
+
+.mainborder{
+    border:1px solid lightgray;
+    margin: 20px;
+}
+
+.mylable{
+    color: blue;
+    width: 100px;
+}
+
+
+.box{
+    background-color:mediumturquoise ;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.imageBox{
+    margin: 5px;
+    background-color: whitesmoke;
+    text-align: center;
+    font-size: 15px;
+    border:1px dashed green;
+    padding:10px
+}
+
+.imageBox img{
+    width: 140px;
+    height: 140px;
+}
+
+.btnul{
+    list-style-type: none;
+    padding-left: 0;
+}
+li{
+  list-style-type: none;
+}
+.btnul li{
+    float: left;
+    margin-left: 10px;
+}
+.addressBox{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(232, 240, 240);
+    margin-top: 3px;
+    border: 1px dashed rgb(26, 26, 22);
+    border-radius: 5px;
+
+}
+.addressBox img,.timesBox img{
+    width: 220px;
+    height: 220px;
+}
+.timesBox{
+    text-align: center;
+    background-color: rgb(232, 240, 240);
+    margin-top: 3px;
+    border: 1px dashed rgb(26, 26, 22);
+    border-radius: 5px;
+}
+.capacityStatus{
+    border: 1px dashed gray;
+    margin: 10px;
+    background-color: aqua;
+    border-radius: 10px;
+}

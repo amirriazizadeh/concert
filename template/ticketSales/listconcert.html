@@ -1,0 +1,12 @@
+{% extends "maintemplate.html" %}
+
+{% block titlepage %}
+لیست کنسرت ها 
+{% endblock %}
+
+{% block mainContent %}
+
+{% for item in concerts %}
+    <p>{{item}}</p>
+{% endfor %}
+{% endblock %}
