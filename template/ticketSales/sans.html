@@ -1,0 +1,33 @@
+{% extends "maintemplate.html" %}
+
+{% block titlepage %} 
+    لیست سانس برگزاری کنسرت
+{% endblock%}
+
+{% block mainContent %}
+    
+    {% if times %}
+        {% for time in times %}
+        <div class="col-md-2">
+            <div class="timesBox">
+                    <h2>{{ time.concertModel.Name }} </h2>
+                    <p>{{time.concertModel.SingerName}}</p>
+                    <p>{{time.locationModel.Name}}</p>
+                    <p>{{time.shamsi_date}}</p>
+                    <p>{{time.Seat}}</p>
+                    <div class="
+                    
+                    {% if time.Status == time.Start %}
+                        btn-success
+                    {% elif time.Status == time.End%}
+                        btn-danger
+                    {% else %}
+                        btn-primary
+                    {% endif %}
+                    
+                    "><p>{{time.get_Status_display}}</p></div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock%}
