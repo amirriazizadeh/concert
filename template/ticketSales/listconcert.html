@@ -1,12 +1,26 @@
 {% extends "maintemplate.html" %}
 
-{% block titlepage %}
-لیست کنسرت ها 
-{% endblock %}
+{% block titlepage %} 
+    لیست کنسرت ها
+{% endblock%}
 
 {% block mainContent %}
-
-{% for item in concerts %}
-    <p>{{item}}</p>
-{% endfor %}
-{% endblock %}
+    <form action="" method="get">
+        {% csrf_token %}
+        {{ searchForm }}
+        <input class="btn btn-primary" type="submit" value="جست و جو">
+    </form>
+    {% if concerts %}
+        {% for concert in concerts %}
+            <div class="col-md-2">
+                <a href="{% url "details" concert.id %}">
+                    <div class="imageBox">
+                        <img src="{{ media }}{{ concert.Poster }}">
+                        <li>نام کنسرت : {{ concert.Name  }}</li>
+                        <li>نام خواننده : {{ concert  }}</li>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock%}

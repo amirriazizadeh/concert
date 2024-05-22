@@ -24,7 +24,7 @@ class locationModel(models.Model):
     capacity=models.IntegerField(verbose_name="ظرفیت")
 
     def __str__(self) -> str:
-        return self.SingerName
+        return self.Name
     
 class timeModel(models.Model):
     class Meta:

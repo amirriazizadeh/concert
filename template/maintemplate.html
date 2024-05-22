@@ -11,10 +11,19 @@
         <div class="container">
             <div class="row box">
                 <h1>{% block titlepage %} {% endblock%}</h1>
-             
+                <ul class="btnul">
+                    {% if user.is_authenticated %}
+                    <li><a href=""  class="btn btn-danger">خروج</a></li>
+                    {% else %}
+                    <li><a href="" class="btn btn-primary">ورود</a></li>
+                    <li><a href="" class="btn btn-primary">ثبت نام</a></li>
+                    {% endif %}
+                    <li><a href="{% url "home" %}" class="btn btn-success">صفحه اصلی</a></li>
+                    <li><a href="{% url "locatoins" %}" class="btn btn-danger">اطلاعات محل</a></li>
+                </ul>
             </div>
             <div class="row">
-                  {% block mainContent %} {% endblock%}
+                  {% block mainContent %}{% endblock%}
             </div>
         </div>
     </body>

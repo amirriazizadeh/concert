@@ -1,0 +1,28 @@
+{% extends "maintemplate.html" %}
+
+{% block titlepage %} 
+    لیست مکانهای برگزاری کنسرت
+{% endblock%}
+
+{% block mainContent %}
+    <div class="addressBox">
+        <div class="col-md-3">
+            <h3>نام سالن</h3>
+        </div>
+        <div class="col-md-9">
+            <h3>آدرس</h3>
+        </div>
+    </div>
+    {% if locations %}
+        {% for location in locations %}
+            <div class="addressBox">
+                <div class="col-md-2">
+                    {{location.Name}}
+                </div>
+                <div class="col-md-8">
+                    {{location.Address}}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock%}
