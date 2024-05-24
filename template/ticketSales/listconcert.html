@@ -3,13 +3,11 @@
 {% block titlepage %} 
     لیست کنسرت ها
 {% endblock%}
+{% block additional %}
+    {% include "partials/search.html" %}
+{% endblock%}
 
 {% block mainContent %}
-    <form action="" method="get">
-        {% csrf_token %}
-        {{ searchForm }}
-        <input class="btn btn-primary" type="submit" value="جست و جو">
-    </form>
     {% if concerts %}
         {% for concert in concerts %}
             <div class="col-md-2">

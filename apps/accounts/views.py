@@ -31,4 +31,11 @@ def logoutView(request):
     if request.GET.get("next"):
         return render(request.GET.get("next"))
     return redirect(reverse(ticketSales.views.concertListView))
-    
+
+@login_required
+def profileView(request):
+    profile=request.user.profile
+    context={
+        "profile":profile
+    }
+    return render(request,"accounts/profile.html",context)

@@ -15,6 +15,7 @@
                 <ul class="btnul" >
                     {% if user.is_authenticated %}
                     <li><a href="{% url "logout" %}"  class="btn btn-danger">خروج</a></li>
+                    <li><a href="{% url "profile" %}"  class="btn btn-primary">پروفایل</a></li>
                     {% else %}
                     <li><a href="{% url "login" %}" class="btn btn-primary">ورود</a></li>
                     <li><a href="" class="btn btn-primary">ثبت نام</a></li>
@@ -22,6 +23,7 @@
                     <li><a href="{% url "home" %}" class="btn btn-success">صفحه اصلی</a></li>
                     <li><a href="{% url "sans" %}" class="btn btn-primary">سانس </a></li>
                     <li><a href="{% url "locatoins" %}" class="btn btn-danger">اطلاعات محل</a></li>
+                    {% block additional %}{% endblock%}
                 </ul>
             </div>
             <div class="row">
