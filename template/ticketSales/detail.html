@@ -18,6 +18,6 @@
          <div class="imageBox">
              <img src="{{ concert.Poster.url }}">
          </div>
-         <a href="/ticketSales/concertEdit/{{ concert.id }}" class="btn btn-success" >ویرایش</a>
+         <a href="{% url "editPage" concert.id %}" class="btn btn-success" >ویرایش</a>
  </div>
 {% endblock%}

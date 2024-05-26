@@ -1,8 +1,13 @@
+from typing import Any
 from django.shortcuts import render
 from .models import concertModel,locationModel,timeModel
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from .forms import searchForm
+from .forms import searchForm,ConcertForm
+from django.views.generic import ListView
+from django.urls import reverse
+from django.http import HttpResponse,HttpResponseRedirect
+
 
 # Create your views here.
 def concertListView(request):
@@ -38,14 +43,21 @@ def concertListView(request):
     #         "media":media
     #     }
     #     return render(request,"ticketSales/listconcert.html",context)
-@login_required
-def listOfLocations(request):
-    locs=locationModel.objects.all()
-    context={
-        "locations":locs
-    }
-    return render(request,'ticketSales/locationtemplate.html',context)
+# @login_required
+# def listOfLocations(request):
+#     locs=locationModel.objects.all()
+#     context={
+#         "locations":locs
+#     }
+#     return render(request,'ticketSales/locationtemplate.html',context)
 
+
+class locationsViews(ListView):
+    template_name="ticketSales/locationtemplate.html"
+    model=locationModel
+    context_object_name="locations"
+        
+        
 
 def concertDetails(request,concertId):
     concert=concertModel.objects.get(pk=concertId)
@@ -61,3 +73,23 @@ def timesInfo(request):
         "times":times
     }
     return render(request,'ticketSales/sans.html',context)
+
+def concertEditView(request,concert_id):
+    cnrt=concertModel.objects.get(pk=concert_id)
+    mda=settings.MEDIA_URL
+    if request.method=="POST":
+        concertForm=ConcertForm(request.POST,request.FILES,instance=cnrt)
+        concertForm.save()
+
+        return HttpResponseRedirect(reverse(concertListView))
+    else:
+        concertForm=ConcertForm(instance=cnrt)
+    context={
+            "concertForm":concertForm,
+            "concert":cnrt,
+            "poster":cnrt.Poster,
+            "media":mda
+            
+        }
+    return render(request,"ticketSales/concertEdit.html",context)
+

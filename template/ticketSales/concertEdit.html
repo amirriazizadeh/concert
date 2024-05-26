@@ -1,0 +1,29 @@
+{% extends "maintemplate.html" %}
+
+{% block titlepage %} 
+    ویرایش ها
+{% endblock%}
+
+{% block mainContent %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mainborder">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mylabel">نام کنسرت:{{ concertForm.Name }}</p>
+                    <p class="mylabel">نام خواننده:{{ concertForm.SingerName }}</p>
+                    <p class="mylabel">مدت زمان:{{ concertForm.lenght }}</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="imageBox">
+                        <img src="{{ media }}{{ poster }}" alt="ax">
+                        {{ concertForm.Poster }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <button class="btn btn-primary" type="submit">تغییر </button>
+    </form>
+   
+{% endblock%}
